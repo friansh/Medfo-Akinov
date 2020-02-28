@@ -120,7 +120,6 @@ class TombolMedfo extends React.Component {
     Swal.fire({
       title: "Nomor publikasinya?",
       input: "text",
-      showCancelButton: true,
       confirmButtonText: "Kirim"
     }).then(result => {
       bodyFormData.set("nomor", result.value);

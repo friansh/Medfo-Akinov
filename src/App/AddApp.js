@@ -122,13 +122,13 @@ class Add extends React.Component {
         data: bodyFormData,
         headers: { "Content-Type": "multipart/form-data" }
       })
-        .then(
+        .then(() => {
           Swal.fire(
             "Sukses",
             "Berhasil ditambah! jangan lupa konfirmasi ke medinfo ya:|",
             "success"
-          )
-        )
+          ).then(() => (window.location.replace = "/edit"));
+        })
         .catch(error => console.log(error.response));
     } else {
       Swal.fire("Gagal", "Isi dulu dong semua kolomnya!", "error");
