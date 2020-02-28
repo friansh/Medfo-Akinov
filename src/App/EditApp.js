@@ -19,7 +19,7 @@ class Edit extends React.Component {
   }
 
   refreshPublikasi() {
-    let url = "http://192.168.100.32/medfo-akinov-backend/";
+    let url = "http://medfokinov.fikrirp.com";
     let bodyFormData = new FormData();
     bodyFormData.set("token", "medfoAkinov2020");
     bodyFormData.set("action", "lihat");

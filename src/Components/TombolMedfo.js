@@ -27,7 +27,7 @@ class TombolMedfo extends React.Component {
   }
 
   handleProses() {
-    let url = "http://192.168.100.32/medfo-akinov-backend/";
+    let url = "http://medfokinov.fikrirp.com";
     let bodyFormData = new FormData();
     bodyFormData.set("token", "medfoAkinov2020");
     bodyFormData.set("action", "proses");
@@ -61,7 +61,7 @@ class TombolMedfo extends React.Component {
   }
 
   handleCacat() {
-    let url = "http://192.168.100.32/medfo-akinov-backend/";
+    let url = "http://medfokinov.fikrirp.com";
     let bodyFormData = new FormData();
     bodyFormData.set("token", "medfoAkinov2020");
     bodyFormData.set("action", "cacat");
@@ -106,7 +106,7 @@ class TombolMedfo extends React.Component {
   }
 
   handleSelesai() {
-    let url = "http://192.168.100.32/medfo-akinov-backend/";
+    let url = "http://medfokinov.fikrirp.com";
     let bodyFormData = new FormData();
     bodyFormData.set("token", "medfoAkinov2020");
     bodyFormData.set("action", "selesai");

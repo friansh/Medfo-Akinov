@@ -90,7 +90,7 @@ class Add extends React.Component {
       this.state.media !== "" &&
       this.state.konsep !== ""
     ) {
-      let url = "http://192.168.100.32/medfo-akinov-backend/";
+      let url = "http://medfokinov.fikrirp.com";
       let bodyFormData = new FormData();
       bodyFormData.set("token", "medfoAkinov2020");
       bodyFormData.set("action", "tambah");
