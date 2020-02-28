@@ -127,7 +127,7 @@ class Add extends React.Component {
             "Sukses",
             "Berhasil ditambah! jangan lupa konfirmasi ke medinfo ya:|",
             "success"
-          ).then(() => (window.location.replace = "/edit"));
+          ).then(() => window.location.replace("/edit"));
         })
         .catch(error => console.log(error.response));
     } else {
