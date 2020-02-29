@@ -90,7 +90,7 @@ class Add extends React.Component {
       this.state.media !== "" &&
       this.state.konsep !== ""
     ) {
-      let url = "http://medfokinov.fikrirp.com";
+      let url = "https://medfokinov.fikrirp.com";
       let bodyFormData = new FormData();
       bodyFormData.set("token", "medfoAkinov2020");
       bodyFormData.set("action", "tambah");
@@ -255,23 +255,37 @@ class Add extends React.Component {
                       />
                       <Form.Check
                         type="radio"
-                        label="Publikasi Konten Informasi"
+                        label="Internal - Publikasi Konten Informasi"
                         name="radioJenisPublikasi"
                         id="K2"
                         onChange={this.handleRadioKategori}
                       />
                       <Form.Check
                         type="radio"
-                        label="Publikasi Prestasi"
+                        label="Internal - Publikasi Prestasi"
                         name="radioJenisPublikasi"
                         id="K3"
                         onChange={this.handleRadioKategori}
                       />
                       <Form.Check
                         type="radio"
-                        label="Publikasi Lainnya"
+                        label="Internal - Publikasi Lainnya"
                         name="radioJenisPublikasi"
                         id="K4"
+                        onChange={this.handleRadioKategori}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Eksternal - Repost OA"
+                        name="radioJenisPublikasi"
+                        id="K5"
+                        onChange={this.handleRadioKategori}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Eksternal - Publikasi Lainnya"
+                        name="radioJenisPublikasi"
+                        id="K6"
                         onChange={this.handleRadioKategori}
                       />
                     </fieldset>

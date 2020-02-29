@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Navbar bg="light" expand="md">
-          <Navbar.Brand href="#home">MEDFOKINOV</Navbar.Brand>
+          <Navbar.Brand href="/">SIAPMEN</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Container fluid>
