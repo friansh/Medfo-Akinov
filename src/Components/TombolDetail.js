@@ -25,7 +25,7 @@ class TombolDetail extends React.Component {
   }
 
   handleUpdateClick() {
-    let url = "https://medfokinov.fikrirp.com";
+    let url = "https://medfokinov.fikrirp.com/api.php";
     let bodyFormData = new FormData();
     bodyFormData.set("token", "medfoAkinov2020");
     bodyFormData.set("action", "perbarui");
@@ -120,7 +120,7 @@ class TombolDetail extends React.Component {
       case "K1":
         this.setState(state => {
           return {
-            kategori: "Publikasi Proker",
+            kategori: "Internal - Publikasi Proker",
             nomor: state.nomor + "I1/"
           };
         });
@@ -129,7 +129,7 @@ class TombolDetail extends React.Component {
       case "K2":
         this.setState(state => {
           return {
-            kategori: "Publikasi Konten Informasi",
+            kategori: "Internal - Publikasi Konten Informasi",
             nomor: state.nomor + "I2/"
           };
         });
@@ -138,7 +138,7 @@ class TombolDetail extends React.Component {
       case "K3":
         this.setState(state => {
           return {
-            kategori: "Publikasi Prestasi",
+            kategori: "Internal - Publikasi Prestasi",
             nomor: state.nomor + "I3/"
           };
         });
@@ -147,8 +147,35 @@ class TombolDetail extends React.Component {
       case "K4":
         this.setState(state => {
           return {
-            kategori: "Publikasi Lainnya",
+            kategori: "Internal - Live Report Acara",
             nomor: state.nomor + "I4/"
+          };
+        });
+        break;
+
+      case "K5":
+        this.setState(state => {
+          return {
+            kategori: "Internal - Publikasi Lainnya",
+            nomor: state.nomor + "I5/"
+          };
+        });
+        break;
+
+      case "K6":
+        this.setState(state => {
+          return {
+            kategori: "Eksternal - Repost OA",
+            nomor: state.nomor + "E1/"
+          };
+        });
+        break;
+
+      case "K7":
+        this.setState(state => {
+          return {
+            kategori: "Eksternal - Publikasi Lainnya",
+            nomor: state.nomor + "E2/"
           };
         });
         break;
@@ -173,6 +200,12 @@ class TombolDetail extends React.Component {
       case "M3":
         this.setState({
           media: "Poster dan Video"
+        });
+        break;
+
+      case "M4":
+        this.setState({
+          media: "Live Report"
         });
         break;
 

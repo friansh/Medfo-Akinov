@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Row, Form, Col, Card, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Form,
+  Col,
+  Card,
+  Button,
+  Spinner
+} from "react-bootstrap";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 import Swal from "sweetalert2";
@@ -16,7 +24,8 @@ class Add extends React.Component {
       kategori: "",
       media: "",
       konsep: "",
-      deadline: undefined
+      deadline: undefined,
+      loading: false
     };
 
     this.handleSimpan = this.handleSimpan.bind(this);
@@ -29,14 +38,7 @@ class Add extends React.Component {
     this.handleKonsepTyping = this.handleKonsepTyping.bind(this);
   }
 
-  componentDidMount() {
-    let deadline = new Date();
-    deadline.setDate(deadline.getDate() + 3);
-
-    this.setState({
-      deadline: deadline
-    });
-  }
+  componentDidMount() {}
 
   handleKonsepTyping(e) {
     this.setState({
@@ -78,6 +80,30 @@ class Add extends React.Component {
     this.setState({
       media: e.target.id
     });
+    let deadline = new Date();
+    switch (e.target.id) {
+      case "M1":
+        deadline.setDate(deadline.getDate() + 3);
+        break;
+
+      case "M2":
+        deadline.setDate(deadline.getDate() + 7);
+        break;
+
+      case "M3":
+        deadline.setDate(deadline.getDate() + 8);
+        break;
+
+      case "M4":
+        deadline.setDate(deadline.getDate() + 1);
+        break;
+
+      default:
+        break;
+    }
+    this.setState({
+      deadline: deadline
+    });
   }
 
   handleSimpan() {
@@ -90,7 +116,11 @@ class Add extends React.Component {
       this.state.media !== "" &&
       this.state.konsep !== ""
     ) {
-      let url = "https://medfokinov.fikrirp.com";
+      this.setState({
+        loading: true
+      });
+      let url = "https://medfokinov.fikrirp.com/api.php";
+      let self = this;
       let bodyFormData = new FormData();
       bodyFormData.set("token", "medfoAkinov2020");
       bodyFormData.set("action", "tambah");
@@ -129,7 +159,12 @@ class Add extends React.Component {
             "success"
           ).then(() => window.location.replace("/edit"));
         })
-        .catch(error => console.log(error.response));
+        .catch(error => console.log(error.response))
+        .then(() =>
+          this.setState({
+            loading: false
+          })
+        );
     } else {
       Swal.fire("Gagal", "Isi dulu dong semua kolomnya!", "error");
     }
@@ -196,6 +231,42 @@ class Add extends React.Component {
                     />
                   </Form.Group>
                   <hr />
+                  <Form.Group controlId="formMedia">
+                    <Form.Label style={{ fontWeight: 600 }}>
+                      Media yang diinginkan:
+                    </Form.Label>
+                    <fieldset>
+                      <Form.Check
+                        type="radio"
+                        label="Poster"
+                        name="radioMedia"
+                        id="M1"
+                        onChange={this.handleRadioMedia}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Video"
+                        name="radioMedia"
+                        id="M2"
+                        onChange={this.handleRadioMedia}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Poster dan Video"
+                        name="radioMedia"
+                        id="M3"
+                        onChange={this.handleRadioMedia}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Live Report"
+                        name="radioMedia"
+                        id="M4"
+                        onChange={this.handleRadioMedia}
+                      />
+                    </fieldset>
+                  </Form.Group>
+                  <hr />
                   <Form.Group>
                     <Form.Label style={{ fontWeight: 600 }}>
                       Buat kapan?
@@ -204,10 +275,15 @@ class Add extends React.Component {
                     <DayPickerInput
                       onDayChange={day => this.handleKapan(day)}
                       dayPickerProps={{
-                        disabledDays: {
-                          after: new Date(),
-                          before: this.state.deadline
-                        }
+                        disabledDays: [
+                          {
+                            after: new Date(),
+                            before: this.state.deadline
+                          },
+                          {
+                            before: new Date()
+                          }
+                        ]
                       }}
                     />
                   </Form.Group>
@@ -248,7 +324,7 @@ class Add extends React.Component {
                     <fieldset>
                       <Form.Check
                         type="radio"
-                        label="Publikasi Proker"
+                        label="Internal - Publikasi Proker"
                         name="radioJenisPublikasi"
                         id="K1"
                         onChange={this.handleRadioKategori}
@@ -269,53 +345,31 @@ class Add extends React.Component {
                       />
                       <Form.Check
                         type="radio"
-                        label="Internal - Publikasi Lainnya"
+                        label="Internal - Live Report Acara"
                         name="radioJenisPublikasi"
                         id="K4"
                         onChange={this.handleRadioKategori}
                       />
                       <Form.Check
                         type="radio"
-                        label="Eksternal - Repost OA"
+                        label="Internal - Publikasi Lainnya"
                         name="radioJenisPublikasi"
                         id="K5"
                         onChange={this.handleRadioKategori}
                       />
                       <Form.Check
                         type="radio"
-                        label="Eksternal - Publikasi Lainnya"
+                        label="Eksternal - Repost OA"
                         name="radioJenisPublikasi"
                         id="K6"
                         onChange={this.handleRadioKategori}
                       />
-                    </fieldset>
-                  </Form.Group>
-                  <hr />
-                  <Form.Group controlId="formMedia">
-                    <Form.Label style={{ fontWeight: 600 }}>
-                      Media yang diinginkan:
-                    </Form.Label>
-                    <fieldset>
                       <Form.Check
                         type="radio"
-                        label="Poster"
-                        name="radioMedia"
-                        id="M1"
-                        onChange={this.handleRadioMedia}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Video"
-                        name="radioMedia"
-                        id="M2"
-                        onChange={this.handleRadioMedia}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Poster dan Video"
-                        name="radioMedia"
-                        id="M3"
-                        onChange={this.handleRadioMedia}
+                        label="Eksternal - Publikasi Lainnya"
+                        name="radioJenisPublikasi"
+                        id="K7"
+                        onChange={this.handleRadioKategori}
                       />
                     </fieldset>
                   </Form.Group>
@@ -330,9 +384,22 @@ class Add extends React.Component {
                     />
                   </Form.Group>
                   <hr />
-                  <Button variant="primary" onClick={this.handleSimpan}>
-                    Request
-                  </Button>
+                  <Container fluid>
+                    <Row>
+                      <Col>
+                        <Button variant="primary" onClick={this.handleSimpan}>
+                          Request
+                        </Button>
+                      </Col>
+                      <Col>
+                        {this.state.loading ? (
+                          <Spinner className="float-right" animation="border" />
+                        ) : (
+                          ""
+                        )}
+                      </Col>
+                    </Row>
+                  </Container>
                 </Form>
               </Card.Body>
             </Card>

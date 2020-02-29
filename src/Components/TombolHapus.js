@@ -16,7 +16,7 @@ class TombolHapus extends React.Component {
     bodyFormData.set("action", "hapus");
     bodyFormData.set("id", this.props.dataId);
 
-    let url = "https://medfokinov.fikrirp.com";
+    let url = "https://medfokinov.fikrirp.com/api.php";
     let self = this;
 
     Swal.fire({

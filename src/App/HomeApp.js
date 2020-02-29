@@ -21,6 +21,8 @@ class Home extends React.Component {
       html:
         "1. Poster paling lambat H-3 dari waktu publikasi<br>" +
         "2. Video paling lambat H-7 dari waktu publikasi<br>" +
+        "3. Poster dan Video paling lambat H-8 dari waktu publikasi<br>" +
+        "4. Live Report paling lambat H-1 dari waktu publikasi<br>" +
         "<br>" +
         "Mengorder berarti menyetujui sist."
     });
@@ -34,6 +36,8 @@ class Home extends React.Component {
             <Jumbotron>
               <h1>Halo dunia!</h1>
               <p>
+                Selamat datang di Sistem Antrean Publikasi Medfo Akinov
+                (SIAPMEN). <br />
                 Divisi medfo dari Departemen Akademik dan Inovasi disini. Portal
                 ini buat ngedata post kita ya. Thx.
               </p>
