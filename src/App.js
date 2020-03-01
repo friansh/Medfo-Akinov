@@ -7,10 +7,39 @@ import Edit from "./App/EditApp";
 import "./style.css";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false
+    };
+
+    this.handleNavToggle = this.handleNavToggle.bind(this);
+    this.shrinkNav = this.shrinkNav.bind(this);
+  }
+
+  shrinkNav() {
+    this.setState({
+      expanded: false
+    });
+  }
+
+  handleNavToggle() {
+    this.setState(state => {
+      return {
+        expanded: !state.expanded
+      };
+    });
+  }
+
   render() {
     return (
       <BrowserRouter>
-        <Navbar bg="light" expand="md">
+        <Navbar
+          bg="light"
+          expand="md"
+          expanded={this.state.expanded}
+          onToggle={this.handleNavToggle}
+        >
           <Navbar.Brand href="/">SIAPMEN</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -20,6 +49,7 @@ class App extends React.Component {
                   <Link
                     to="/"
                     style={{ textDecoration: "inherit", color: "inherit" }}
+                    onClick={this.shrinkNav}
                   >
                     Home
                   </Link>
@@ -28,6 +58,7 @@ class App extends React.Component {
                   <Link
                     to="/add"
                     style={{ textDecoration: "inherit", color: "inherit" }}
+                    onClick={this.shrinkNav}
                   >
                     Request
                   </Link>
@@ -36,6 +67,7 @@ class App extends React.Component {
                   <Link
                     to="/edit"
                     style={{ textDecoration: "inherit", color: "inherit" }}
+                    onClick={this.shrinkNav}
                   >
                     Status
                   </Link>
