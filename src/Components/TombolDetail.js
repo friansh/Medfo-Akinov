@@ -9,9 +9,9 @@ class TombolDetail extends React.Component {
     this.state = {
       pubs: [],
       editModal: false,
-      kategori: "",
-      media: "",
-      waktupost: "",
+      kategori: this.props.kategori,
+      media: this.props.media,
+      waktupost: this.props.waktupost,
       nomor: "BEM/B/AKINOV/",
       caption: this.props.caption,
       konsep: this.props.konsep
@@ -71,7 +71,7 @@ class TombolDetail extends React.Component {
   }
 
   componentDidMount() {
-    switch (this.props.divisi) {
+    switch (this.state.divisi) {
       case "D1":
         this.setState(state => {
           return {
@@ -116,7 +116,7 @@ class TombolDetail extends React.Component {
         break;
     }
 
-    switch (this.props.kategori) {
+    switch (this.state.kategori) {
       case "Internal - Publikasi Proker":
         this.setState(state => {
           return {
@@ -177,7 +177,7 @@ class TombolDetail extends React.Component {
         break;
     }
 
-    switch (this.props.waktupost) {
+    switch (this.state.waktupost) {
       case "P1":
         this.setState({
           waktupost: "10:00"
@@ -200,22 +200,22 @@ class TombolDetail extends React.Component {
         break;
     }
 
-    if (this.props.nomor < 10 && this.props.nomor != null) {
+    if (this.state.nomor < 10 && this.state.nomor != null) {
       this.setState(state => {
         return {
-          nomor: state.nomor + "00" + this.props.nomor
+          nomor: state.nomor + "00" + this.state.nomor
         };
       });
-    } else if (this.props.nomor > 10 && this.props.nomor < 100) {
+    } else if (this.state.nomor > 10 && this.state.nomor < 100) {
       this.setState(state => {
         return {
-          nomor: state.nomor + "0" + this.props.nomor
+          nomor: state.nomor + "0" + this.state.nomor
         };
       });
-    } else if (this.props.nomor > 100) {
+    } else if (this.state.nomor > 100) {
       this.setState(state => {
         return {
-          nomor: state.nomor + this.props.nomor
+          nomor: state.nomor + this.state.nomor
         };
       });
     } else {
@@ -296,7 +296,7 @@ class TombolDetail extends React.Component {
                 <Form.Label>Kategori:</Form.Label>
                 <Form.Control
                   type={"text"}
-                  defaultValue={this.props.kategori}
+                  defaultValue={this.state.kategori}
                   disabled
                 />
               </Form.Group>
@@ -304,7 +304,7 @@ class TombolDetail extends React.Component {
                 <Form.Label>Media:</Form.Label>
                 <Form.Control
                   type={"text"}
-                  defaultValue={this.props.media}
+                  defaultValue={this.state.media}
                   disabled
                 />
               </Form.Group>
