@@ -72,7 +72,7 @@ class TombolDetail extends React.Component {
 
   componentDidMount() {
     switch (this.state.divisi) {
-      case "D1":
+      case "Divisi PKM":
         this.setState(state => {
           return {
             nomor: state.nomor + "I/"
@@ -80,7 +80,7 @@ class TombolDetail extends React.Component {
         });
         break;
 
-      case "D2":
+      case "Divisi Inovasi":
         this.setState(state => {
           return {
             nomor: state.nomor + "II/"
@@ -88,7 +88,7 @@ class TombolDetail extends React.Component {
         });
         break;
 
-      case "D3":
+      case "Divisi Prestasi":
         this.setState(state => {
           return {
             nomor: state.nomor + "III/"
@@ -96,7 +96,7 @@ class TombolDetail extends React.Component {
         });
         break;
 
-      case "D4":
+      case "Divisi Public Relation":
         this.setState(state => {
           return {
             nomor: state.nomor + "IV/"
@@ -104,7 +104,7 @@ class TombolDetail extends React.Component {
         });
         break;
 
-      case "D5":
+      case "Divisi Medfo":
         this.setState(state => {
           return {
             nomor: state.nomor + "V/"
@@ -157,7 +157,7 @@ class TombolDetail extends React.Component {
         });
         break;
 
-      case "Eksternal - Repost OA":
+      case "Eksternal - Repost":
         this.setState(state => {
           return {
             nomor: state.nomor + "E1/"
