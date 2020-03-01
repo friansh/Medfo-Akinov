@@ -117,64 +117,57 @@ class TombolDetail extends React.Component {
     }
 
     switch (this.props.kategori) {
-      case "K1":
+      case "Internal - Publikasi Proker":
         this.setState(state => {
           return {
-            kategori: "Internal - Publikasi Proker",
             nomor: state.nomor + "I1/"
           };
         });
         break;
 
-      case "K2":
+      case "Internal - Publikasi Konten Informasi":
         this.setState(state => {
           return {
-            kategori: "Internal - Publikasi Konten Informasi",
             nomor: state.nomor + "I2/"
           };
         });
         break;
 
-      case "K3":
+      case "Internal - Publikasi Prestasi":
         this.setState(state => {
           return {
-            kategori: "Internal - Publikasi Prestasi",
             nomor: state.nomor + "I3/"
           };
         });
         break;
 
-      case "K4":
+      case "Internal - Live Report Acara":
         this.setState(state => {
           return {
-            kategori: "Internal - Live Report Acara",
             nomor: state.nomor + "I4/"
           };
         });
         break;
 
-      case "K5":
+      case "Internal - Publikasi Lainnya":
         this.setState(state => {
           return {
-            kategori: "Internal - Publikasi Lainnya",
             nomor: state.nomor + "I5/"
           };
         });
         break;
 
-      case "K6":
+      case "Eksternal - Repost OA":
         this.setState(state => {
           return {
-            kategori: "Eksternal - Repost OA",
             nomor: state.nomor + "E1/"
           };
         });
         break;
 
-      case "K7":
+      case "Eksternal - Publikasi Lainnya":
         this.setState(state => {
           return {
-            kategori: "Eksternal - Publikasi Lainnya",
             nomor: state.nomor + "E2/"
           };
         });

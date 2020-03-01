@@ -20,11 +20,11 @@ class Add extends React.Component {
     super(props);
     this.state = {
       namarequest: "",
-      divisi: "",
+      divisi: "Divisi PKM",
       tanggalpost: "",
       jampost: "",
-      kategori: "",
-      media: "",
+      kategori: "Internal - Publikasi Proker",
+      media: "Poster",
       konsep: "",
       deadline: undefined,
       loading: false
@@ -40,7 +40,13 @@ class Add extends React.Component {
     this.handleKonsepTyping = this.handleKonsepTyping.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    let deadline = new Date();
+    deadline.setDate(deadline.getDate() + 3);
+    this.setState({
+      deadline: deadline
+    });
+  }
 
   handleKonsepTyping(e) {
     this.setState({
@@ -56,7 +62,7 @@ class Add extends React.Component {
 
   handleRadioDivisi(e) {
     this.setState({
-      divisi: e.target.id
+      divisi: e.target.value
     });
   }
 
@@ -64,7 +70,6 @@ class Add extends React.Component {
     this.setState({
       tanggalpost: kapan
     });
-    console.log(kapan);
   }
 
   handleRadioJam(e) {
@@ -75,30 +80,34 @@ class Add extends React.Component {
 
   handleRadioKategori(e) {
     this.setState({
-      kategori: e.target.id
+      kategori: e.target.value
     });
   }
 
   handleRadioMedia(e) {
     this.setState({
-      media: e.target.id
+      media: e.target.value
     });
     let deadline = new Date();
-    switch (e.target.id) {
-      case "M1":
+    switch (e.target.value) {
+      case "Poster":
         deadline.setDate(deadline.getDate() + 3);
         break;
 
-      case "M2":
+      case "Video":
         deadline.setDate(deadline.getDate() + 7);
         break;
 
-      case "M3":
+      case "Poster dan Video":
         deadline.setDate(deadline.getDate() + 8);
         break;
 
-      case "M4":
+      case "Live Report":
         deadline.setDate(deadline.getDate() + 1);
+        break;
+
+      case "Repost":
+        deadline.setDate(deadline.getDate() + 2);
         break;
 
       default:
@@ -195,81 +204,29 @@ class Add extends React.Component {
                     />
                   </Form.Group>
                   <hr />
-                  <Form.Group controlId="formDivisi">
+                  <Form.Group>
                     <Form.Label style={{ fontWeight: 600 }}>
                       Divisi kamu:
                     </Form.Label>
-                    <Form.Check
-                      type="radio"
-                      name="radioDivisi"
-                      label="Divisi PKM"
-                      id="D1"
-                      onChange={this.handleRadioDivisi}
-                    />
-                    <Form.Check
-                      type="radio"
-                      name="radioDivisi"
-                      label="Divisi Inovasi"
-                      id="D2"
-                      onChange={this.handleRadioDivisi}
-                    />
-                    <Form.Check
-                      type="radio"
-                      name="radioDivisi"
-                      label="Divisi Prestasi"
-                      id="D3"
-                      onChange={this.handleRadioDivisi}
-                    />
-                    <Form.Check
-                      type="radio"
-                      name="radioDivisi"
-                      label="Divisi PR"
-                      id="D4"
-                      onChange={this.handleRadioDivisi}
-                    />
-                    <Form.Check
-                      type="radio"
-                      name="radioDivisi"
-                      label="Divisi Medfo"
-                      id="D5"
-                      onChange={this.handleRadioDivisi}
-                    />
+                    <Form.Control as="select" onChange={this.handleRadioDivisi}>
+                      <option>Divisi PKM</option>
+                      <option>Divisi Inovasi</option>
+                      <option>Divisi Prestasi</option>
+                      <option>Divisi Public Relation</option>
+                      <option>Divisi Medfo</option>
+                    </Form.Control>
                   </Form.Group>
                   <hr />
-                  <Form.Group controlId="formMedia">
+                  <Form.Group>
                     <Form.Label style={{ fontWeight: 600 }}>
                       Media yang diinginkan:
                     </Form.Label>
-                    <fieldset>
-                      <Form.Check
-                        type="radio"
-                        label="Poster"
-                        name="radioMedia"
-                        id="M1"
-                        onChange={this.handleRadioMedia}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Video"
-                        name="radioMedia"
-                        id="M2"
-                        onChange={this.handleRadioMedia}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Poster dan Video"
-                        name="radioMedia"
-                        id="M3"
-                        onChange={this.handleRadioMedia}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Live Report"
-                        name="radioMedia"
-                        id="M4"
-                        onChange={this.handleRadioMedia}
-                      />
-                    </fieldset>
+                    <Form.Control as="select" onChange={this.handleRadioMedia}>
+                      <option>Poster</option>
+                      <option>Video</option>
+                      <option>Poster dan Video</option>
+                      <option>Live Report</option>
+                    </Form.Control>
                   </Form.Group>
                   <hr />
                   <Form.Group>
@@ -279,8 +236,6 @@ class Add extends React.Component {
                     <br />
                     <DayPickerInput
                       onDayChange={day => this.handleKapan(day)}
-                      formatDate={formatDate}
-                      parseDate={parseDate}
                       dayPickerProps={{
                         disabledDays: [
                           {
@@ -324,65 +279,25 @@ class Add extends React.Component {
                     </fieldset>
                   </Form.Group>
                   <hr />
-                  <Form.Group controlId="formMedia">
+                  <Form.Group>
                     <Form.Label style={{ fontWeight: 600 }}>
                       Kategori publikasi:
                     </Form.Label>
-                    <fieldset>
-                      <Form.Check
-                        type="radio"
-                        label="Internal - Publikasi Proker"
-                        name="radioJenisPublikasi"
-                        id="K1"
-                        onChange={this.handleRadioKategori}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Internal - Publikasi Konten Informasi"
-                        name="radioJenisPublikasi"
-                        id="K2"
-                        onChange={this.handleRadioKategori}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Internal - Publikasi Prestasi"
-                        name="radioJenisPublikasi"
-                        id="K3"
-                        onChange={this.handleRadioKategori}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Internal - Live Report Acara"
-                        name="radioJenisPublikasi"
-                        id="K4"
-                        onChange={this.handleRadioKategori}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Internal - Publikasi Lainnya"
-                        name="radioJenisPublikasi"
-                        id="K5"
-                        onChange={this.handleRadioKategori}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Eksternal - Repost OA"
-                        name="radioJenisPublikasi"
-                        id="K6"
-                        onChange={this.handleRadioKategori}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Eksternal - Publikasi Lainnya"
-                        name="radioJenisPublikasi"
-                        id="K7"
-                        onChange={this.handleRadioKategori}
-                      />
-                    </fieldset>
+                    <Form.Control
+                      as="select"
+                      onChange={this.handleRadioKategori}
+                    >
+                      <option>Internal - Publikasi Proker</option>
+                      <option>Internal - Publikasi Konten Informasi</option>
+                      <option>Internal - Publikasi Prestasi</option>
+                      <option>Internal - Live Report Acara</option>
+                      <option>Eksternal - Repost OA</option>
+                      <option>Eksternal - Publikasi Lainnya</option>
+                    </Form.Control>
                   </Form.Group>
                   <hr />
                   <Form.Group>
-                    <Form.Label>Konsep:</Form.Label>
+                    <Form.Label style={{ fontWeight: 600 }}>Konsep:</Form.Label>
                     <Form.Control
                       as={"textarea"}
                       rows={"3"}

@@ -12,7 +12,6 @@ import Axios from "axios";
 import TombolHapus from "../Components/TombolHapus";
 import TombolDetail from "../Components/TombolDetail";
 import TombolMedfo from "../Components/TombolMedfo";
-import Divisi from "../Components/Divisi";
 import Status from "../Components/Status";
 
 class Edit extends React.Component {
@@ -106,9 +105,7 @@ class Edit extends React.Component {
                               {pub.tanggal_post.split("12:00:00")[0]}
                             </small>
                           </td>
-                          <td>
-                            <Divisi divisi={pub.divisi} />
-                          </td>
+                          <td>{pub.divisi}</td>
                           <td>
                             <Status
                               status={pub.status}

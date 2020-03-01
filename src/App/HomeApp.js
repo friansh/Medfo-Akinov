@@ -81,7 +81,7 @@ class Home extends React.Component {
                     <b>5.</b> Repost BEM Fakultas paling lambat <b>H-2</b> dari
                     waktu publikasi
                     <br />
-                    <b>6.</b> Repost Eksternal Lainnya paling lambat <b>H-3</b>{" "}
+                    <b>6.</b> Repost Eksternal Lainnya paling lambat <b>H-2</b>{" "}
                     dari waktu publikasi dihitung saat sudah memberikan feedback
                     <br />
                     <br />
