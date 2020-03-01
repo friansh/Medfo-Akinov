@@ -13,8 +13,8 @@ class TombolDetail extends React.Component {
       media: "",
       waktupost: "",
       nomor: "BEM/B/AKINOV/",
-      caption: "",
-      konsep: ""
+      caption: this.props.caption,
+      konsep: this.props.konsep
     };
 
     this.handleEditModalHide = this.handleEditModalHide.bind(this);
@@ -288,7 +288,7 @@ class TombolDetail extends React.Component {
                 <Form.Control
                   as={"textarea"}
                   rows={"10"}
-                  defaultValue={this.props.caption}
+                  defaultValue={this.state.caption}
                   onChange={this.handleCaptionTyping}
                 />
               </Form.Group>
@@ -328,7 +328,7 @@ class TombolDetail extends React.Component {
               <Form.Control
                 as={"textarea"}
                 rows={"10"}
-                defaultValue={this.props.konsep}
+                defaultValue={this.state.konsep}
                 onChange={this.handleKonsepTyping}
               />
             </Form>
