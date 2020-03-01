@@ -291,7 +291,8 @@ class Add extends React.Component {
                       <option>Internal - Publikasi Konten Informasi</option>
                       <option>Internal - Publikasi Prestasi</option>
                       <option>Internal - Live Report Acara</option>
-                      <option>Eksternal - Repost OA</option>
+                      <option>Internal - Publikasi Lainnya</option>
+                      <option>Eksternal - Repost</option>
                       <option>Eksternal - Publikasi Lainnya</option>
                     </Form.Control>
                   </Form.Group>

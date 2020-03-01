@@ -177,35 +177,6 @@ class TombolDetail extends React.Component {
         break;
     }
 
-    switch (this.props.media) {
-      case "M1":
-        this.setState({
-          media: "Poster"
-        });
-        break;
-
-      case "M2":
-        this.setState({
-          media: "Video"
-        });
-        break;
-
-      case "M3":
-        this.setState({
-          media: "Poster dan Video"
-        });
-        break;
-
-      case "M4":
-        this.setState({
-          media: "Live Report"
-        });
-        break;
-
-      default:
-        break;
-    }
-
     switch (this.props.waktupost) {
       case "P1":
         this.setState({
@@ -325,7 +296,7 @@ class TombolDetail extends React.Component {
                 <Form.Label>Kategori:</Form.Label>
                 <Form.Control
                   type={"text"}
-                  defaultValue={this.state.kategori}
+                  defaultValue={this.props.kategori}
                   disabled
                 />
               </Form.Group>
@@ -333,7 +304,7 @@ class TombolDetail extends React.Component {
                 <Form.Label>Media:</Form.Label>
                 <Form.Control
                   type={"text"}
-                  defaultValue={this.state.media}
+                  defaultValue={this.props.media}
                   disabled
                 />
               </Form.Group>
@@ -341,7 +312,7 @@ class TombolDetail extends React.Component {
                 <Form.Label>Tanggal Post:</Form.Label>
                 <Form.Control
                   type={"text"}
-                  defaultValue={this.props.tanggalpost}
+                  defaultValue={this.props.tanggalpost.split("12:00:00")[0]}
                   disabled
                 />
               </Form.Group>
