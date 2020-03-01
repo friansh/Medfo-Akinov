@@ -51,10 +51,10 @@ class TombolDetail extends React.Component {
         Swal.fire("Gagal", "Permintaan publikasi gagal diperbarui.", "error")
       )
       .then(() => {
-        self.props.refreshPublikasi();
         self.setState({
           editModal: false
         });
+        self.props.refreshPublikasi();
       });
   }
 

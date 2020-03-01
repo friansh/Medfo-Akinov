@@ -135,13 +135,20 @@ class TombolMedfo extends React.Component {
         data: bodyFormData,
         headers: { "Content-Type": "multipart/form-data" }
       })
-        .then(() =>
-          Swal.fire(
-            "Berhasil",
-            "Publikasi <b>" + self.props.namarequest + "</b> sudah selesai.",
-            "success"
-          )
-        )
+        .then(response => {
+          if (response.data.status === "OK")
+            Swal.fire(
+              "Berhasil",
+              "Publikasi <b>" + self.props.namarequest + "</b> sudah selesai.",
+              "success"
+            );
+          else
+            Swal.fire(
+              "Gagal",
+              "Publikasi <b>" + self.props.namarequest + "</b> gagal selesai.",
+              "error"
+            );
+        })
         .catch(() =>
           Swal.fire(
             "Gagal",
@@ -150,7 +157,7 @@ class TombolMedfo extends React.Component {
           )
         )
         .then(() => {
-          window.location.reload();
+          this.props.refreshPublikasi();
         });
     });
   }

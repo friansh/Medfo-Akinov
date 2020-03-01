@@ -36,20 +36,15 @@ class TombolHapus extends React.Component {
           data: bodyFormData,
           headers: { "Content-Type": "multipart/form-data" }
         })
-          .then(
+          .then(() => {
             Swal.fire(
               "Sukses",
-              "Berhasil dihapus! jangan lupa konfirmasi ke medinfo ya:|",
+              "Berhasil dihapus! jangan lupa konfirmasi ke medinfo ya :|",
               "success"
-            )
-          )
+            );
+            self.props.refreshPublikasi();
+          })
           .catch(error => console.log(error.response));
-        Swal.fire(
-          "Dihapus!",
-          "Berhasil. Konfirm ke medinfo ya hehe",
-          "success"
-        );
-        self.props.refreshPublikasi();
       }
     });
   }
