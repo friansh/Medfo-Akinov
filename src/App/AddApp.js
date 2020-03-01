@@ -6,7 +6,8 @@ import {
   Col,
   Card,
   Button,
-  Spinner
+  Spinner,
+  Carousel
 } from "react-bootstrap";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
@@ -155,13 +156,15 @@ class Add extends React.Component {
         .then(() => {
           Swal.fire(
             "Sukses",
-            "Berhasil ditambah! jangan lupa konfirmasi ke medinfo ya:|",
+            "Berhasil ditambah! jangan lupa konfirmasi ke medinfo ya!<br><br>" +
+              "id Line: yoongie_ss (Dian)<br>" +
+              "WA: 082118816441 (Dian)",
             "success"
           ).then(() => window.location.replace("/edit"));
         })
         .catch(error => console.log(error.response))
         .then(() =>
-          this.setState({
+          self.setState({
             loading: false
           })
         );
@@ -174,9 +177,9 @@ class Add extends React.Component {
     return (
       <Container>
         <Row>
-          <Col lg="6">
+          <Col lg="6" className="mb-3 mb-lg-0">
             <Card style={{ boxShadow: "3px 3px 13px 0px rgba(0,0,0,0.32)" }}>
-              <Card.Header>Mau request desain dong, Medfo!</Card.Header>
+              <Card.Header>Mau request desain dong, Medfokinov!</Card.Header>
               <Card.Body>
                 <Form>
                   <Form.Group controlId="formNamaRequest">
@@ -403,6 +406,24 @@ class Add extends React.Component {
                 </Form>
               </Card.Body>
             </Card>
+          </Col>
+          <Col lg="4" className="ml-lg-auto">
+            <Carousel>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="./carousel/1.jpg"
+                  alt="Akinov"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="./carousel/2.jpg"
+                  alt="Medfo"
+                />
+              </Carousel.Item>
+            </Carousel>
           </Col>
         </Row>
       </Container>
