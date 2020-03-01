@@ -188,7 +188,12 @@ class Add extends React.Component {
       <Container>
         <Row>
           <Col lg="6" className="mb-3 mb-lg-0">
-            <Card style={{ boxShadow: "3px 3px 13px 0px rgba(0,0,0,0.32)" }}>
+            <Card
+              style={{
+                boxShadow: "3px 3px 13px 0px rgba(0,0,0,0.32)",
+                padding: "0"
+              }}
+            >
               <Card.Header>Mau request desain dong, Medfokinov!</Card.Header>
               <Card.Body>
                 <Form>
