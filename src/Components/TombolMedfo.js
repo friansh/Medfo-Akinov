@@ -20,10 +20,16 @@ class TombolMedfo extends React.Component {
 
     this.handleMedfoModalHide = this.handleMedfoModalHide.bind(this);
     this.handleMedfoModalShow = this.handleMedfoModalShow.bind(this);
-    this.handleAdminTyping = this.handleAdminTyping.bind(this);
     this.handleProses = this.handleProses.bind(this);
     this.handleCacat = this.handleCacat.bind(this);
     this.handleSelesai = this.handleSelesai.bind(this);
+    this.handleAdminChange = this.handleAdminChange.bind(this);
+  }
+
+  handleAdminChange(e) {
+    this.setState({
+      admin: e.target.value
+    });
   }
 
   handleProses() {
@@ -56,7 +62,7 @@ class TombolMedfo extends React.Component {
         )
       )
       .then(() => {
-        window.location.reload();
+        this.props.refreshPublikasi();
       });
   }
 
@@ -149,12 +155,6 @@ class TombolMedfo extends React.Component {
     });
   }
 
-  handleAdminTyping(e) {
-    this.setState({
-      admin: e.target.value
-    });
-  }
-
   handleMedfoModalHide() {
     this.setState({
       medfoModal: false
@@ -188,14 +188,15 @@ class TombolMedfo extends React.Component {
               </Row>
               <Row>
                 <Form.Control
-                  type="text"
-                  placeholder="nama kamu"
-                  defaultValue={
-                    this.state.admin === undefined ? "" : this.state.admin
-                  }
-                  onChange={this.handleAdminTyping}
-                />
-                <hr />
+                  as="select"
+                  onChange={this.handleAdminChange}
+                  defaultValue={this.state.admin}
+                >
+                  <option>Amin</option>
+                  <option>Dian</option>
+                  <option>Fikri</option>
+                  <option>Ilma</option>
+                </Form.Control>
               </Row>
               <Row className="mt-3">
                 <h6>Proses:</h6>

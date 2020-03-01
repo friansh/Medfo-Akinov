@@ -99,7 +99,13 @@ class Edit extends React.Component {
                       {this.state.pubs.map((pub, index) => (
                         <tr key={pub.id}>
                           <td>{index + 1}.</td>
-                          <td>{pub.nama_request}</td>
+                          <td>
+                            {pub.nama_request}
+                            <br />
+                            <small>
+                              {pub.tanggal_post.split("12:00:00")[0]}
+                            </small>
+                          </td>
                           <td>
                             <Divisi divisi={pub.divisi} />
                           </td>
