@@ -12,6 +12,7 @@ class TombolDetail extends React.Component {
       kategori: this.props.kategori,
       media: this.props.media,
       waktupost: this.props.waktupost,
+      divisi: this.state.divisi,
       nomor: "BEM/B/AKINOV/",
       caption: this.props.caption,
       konsep: this.props.konsep
