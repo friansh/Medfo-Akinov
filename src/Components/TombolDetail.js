@@ -201,22 +201,22 @@ class TombolDetail extends React.Component {
         break;
     }
 
-    if (this.state.nomor < 10 && this.state.nomor != null) {
+    if (this.props.nomor < 10 && this.props.nomor != null) {
       this.setState(state => {
         return {
-          nomor: state.nomor + "00" + this.state.nomor
+          nomor: state.nomor + "00" + this.props.nomor
         };
       });
-    } else if (this.state.nomor > 10 && this.state.nomor < 100) {
+    } else if (this.props.nomor > 10 && this.props.nomor < 100) {
       this.setState(state => {
         return {
-          nomor: state.nomor + "0" + this.state.nomor
+          nomor: state.nomor + "0" + this.props.nomor
         };
       });
-    } else if (this.state.nomor > 100) {
+    } else if (this.props.nomor > 100) {
       this.setState(state => {
         return {
-          nomor: state.nomor + this.state.nomor
+          nomor: state.nomor + this.props.nomor
         };
       });
     } else {
