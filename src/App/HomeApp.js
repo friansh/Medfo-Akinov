@@ -37,19 +37,17 @@ class Home extends React.Component {
 
   componentDidMount() {
     let self = this;
-    Axios.get("https://api.u9.nu/covid19")
+    Axios.get("https://covid19.fikrirp.com/")
       .then(response =>
         self.setState({
           coronaData: response.data
         })
       )
-      .then(() => {
-        console.log(this.state.coronaData);
+      .then(() =>
         self.setState({
           loading: false
-        });
-        console.log(this.state.coronaData.nasional.slice(-1)[0]);
-      });
+        })
+      );
   }
 
   render() {
