@@ -104,12 +104,12 @@ class Home extends React.Component {
                   {this.state.coronaData.nasional
                     .slice(-1)[0]
                     .presentase_sembuh.toString()
-                    .slice(0, 2) +
+                    .slice(0, 1) +
                     "." +
                     this.state.coronaData.nasional
                       .slice(-1)[0]
                       .presentase_sembuh.toString()
-                      .slice(2)}
+                      .slice(1)}
                   % dari terkonfirmasi
                 </p>
               </Card>
@@ -122,12 +122,12 @@ class Home extends React.Component {
                   {this.state.coronaData.nasional
                     .slice(-1)[0]
                     .presentase_meninggal.toString()
-                    .slice(0, 2) +
+                    .slice(0, 1) +
                     "." +
                     this.state.coronaData.nasional
                       .slice(-1)[0]
                       .presentase_meninggal.toString()
-                      .slice(2)}
+                      .slice(1)}
                   % dari terkonfirmasi
                 </p>
               </Card>
@@ -142,7 +142,7 @@ class Home extends React.Component {
                   textShadow: "1px 2px 3px rgba(0,0,0,0.43)"
                 }}
               >
-                Sumber: covid19.go.id
+                Sumber: covid19.or.id
               </p>
               <hr />
             </Col>
