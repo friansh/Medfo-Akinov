@@ -38,11 +38,12 @@ class Home extends React.Component {
   componentDidMount() {
     let self = this;
     Axios.get("https://covid19.fikrirp.com/")
-      .then(response =>
+      .then(response => {
         self.setState({
           coronaData: response.data
-        })
-      )
+        });
+        console.log(response.data);
+      })
       .then(() =>
         self.setState({
           loading: false
@@ -70,66 +71,25 @@ class Home extends React.Component {
             <Col md="3" className="mb-3 mb-md-0">
               <Card body style={{ backgroundColor: "#ffe196" }}>
                 <h5>Positif</h5>
-                <h2>
-                  {
-                    this.state.coronaData.nasional.slice(-1)[0]
-                      .positif_kumulatif
-                  }
-                </h2>
+                <h2>{this.state.coronaData[0].positif}</h2>
               </Card>
             </Col>
             <Col md="3" className="mb-3 mb-md-0">
               <Card body style={{ backgroundColor: "#d8b5b5" }}>
                 <h5>Dalam Perawatan</h5>
-                <h2>{this.state.coronaData.nasional.slice(-1)[0].perawatan}</h2>
-                <p>
-                  {this.state.coronaData.nasional
-                    .slice(-1)[0]
-                    .presentase_perawatan.toString()
-                    .slice(0, 2) +
-                    "." +
-                    this.state.coronaData.nasional
-                      .slice(-1)[0]
-                      .presentase_perawatan.toString()
-                      .slice(2)}
-                  % dari terkonfirmasi
-                </p>
+                <h2>?</h2>
               </Card>
             </Col>
             <Col md="3" className="mb-3 mb-md-0">
               <Card body style={{ backgroundColor: "#05dfd7" }}>
                 <h5>Sembuh</h5>
-                <h2>{this.state.coronaData.nasional.slice(-1)[0].sembuh}</h2>
-                <p>
-                  {this.state.coronaData.nasional
-                    .slice(-1)[0]
-                    .presentase_sembuh.toString()
-                    .slice(0, 1) +
-                    "." +
-                    this.state.coronaData.nasional
-                      .slice(-1)[0]
-                      .presentase_sembuh.toString()
-                      .slice(1)}
-                  % dari terkonfirmasi
-                </p>
+                <h2>{this.state.coronaData[0].sembuh}</h2>
               </Card>
             </Col>
             <Col md="3" className="mb-3 mb-md-0">
               <Card body style={{ backgroundColor: "#ec7373" }}>
                 <h5>Meninggal</h5>
-                <h2>{this.state.coronaData.nasional.slice(-1)[0].meninggal}</h2>
-                <p>
-                  {this.state.coronaData.nasional
-                    .slice(-1)[0]
-                    .presentase_meninggal.toString()
-                    .slice(0, 1) +
-                    "." +
-                    this.state.coronaData.nasional
-                      .slice(-1)[0]
-                      .presentase_meninggal.toString()
-                      .slice(1)}
-                  % dari terkonfirmasi
-                </p>
+                <h2>{this.state.coronaData[0].meninggal}</h2>
               </Card>
             </Col>
           </Row>
