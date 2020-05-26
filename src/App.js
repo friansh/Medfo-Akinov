@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
     };
 
     this.handleNavToggle = this.handleNavToggle.bind(this);
@@ -19,14 +19,14 @@ class App extends React.Component {
 
   shrinkNav() {
     this.setState({
-      expanded: false
+      expanded: false,
     });
   }
 
   handleNavToggle() {
-    this.setState(state => {
+    this.setState((state) => {
       return {
-        expanded: !state.expanded
+        expanded: !state.expanded,
       };
     });
   }
@@ -40,7 +40,7 @@ class App extends React.Component {
           expanded={this.state.expanded}
           onToggle={this.handleNavToggle}
           style={{
-            minWidth: "100"
+            minWidth: "100",
           }}
         >
           <Navbar.Brand href="/">SIAPMEN</Navbar.Brand>
@@ -98,9 +98,9 @@ class App extends React.Component {
         </Container>
         <Container
           style={{
-            minWidth: "100vh",
+            // minWidth: "100vh",
             minHeight: "90px",
-            backgroundColor: "#212121"
+            backgroundColor: "#212121",
           }}
           fluid
         >
@@ -112,11 +112,11 @@ class App extends React.Component {
                 Departemen Akademik dan Inovasi
               </small>
             </Col>
-            <Col className="py-3 justify-content-end d-flex">
+            {/* <Col className="py-3 justify-content-end d-flex">
               <img src="logo/unpad.png" height="60" alt="unpad" />
               <img src="logo/bem.png" height="60" alt="bem" />
               <img src="logo/xman.png" height="60" alt="xman" />
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </BrowserRouter>

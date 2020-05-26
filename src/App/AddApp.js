@@ -7,7 +7,7 @@ import {
   Card,
   Button,
   Spinner,
-  Carousel
+  Carousel,
 } from "react-bootstrap";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
@@ -19,14 +19,14 @@ class Add extends React.Component {
     super(props);
     this.state = {
       namarequest: "",
-      divisi: "Divisi PKM",
+      divisi: "Divisi Akpres",
       tanggalpost: "",
       jampost: "",
       kategori: "Internal - Publikasi Proker",
       media: "Poster",
       konsep: "",
       deadline: undefined,
-      loading: false
+      loading: false,
     };
 
     this.handleSimpan = this.handleSimpan.bind(this);
@@ -43,49 +43,49 @@ class Add extends React.Component {
     let deadline = new Date();
     deadline.setDate(deadline.getDate() + 3);
     this.setState({
-      deadline: deadline
+      deadline: deadline,
     });
   }
 
   handleKonsepTyping(e) {
     this.setState({
-      konsep: e.target.value
+      konsep: e.target.value,
     });
   }
 
   handleNamaRequestTyping(e) {
     this.setState({
-      namarequest: e.target.value
+      namarequest: e.target.value,
     });
   }
 
   handleRadioDivisi(e) {
     this.setState({
-      divisi: e.target.value
+      divisi: e.target.value,
     });
   }
 
   handleKapan(kapan) {
     this.setState({
-      tanggalpost: kapan
+      tanggalpost: kapan,
     });
   }
 
   handleRadioJam(e) {
     this.setState({
-      jampost: e.target.id
+      jampost: e.target.id,
     });
   }
 
   handleRadioKategori(e) {
     this.setState({
-      kategori: e.target.value
+      kategori: e.target.value,
     });
   }
 
   handleRadioMedia(e) {
     this.setState({
-      media: e.target.value
+      media: e.target.value,
     });
     let deadline = new Date();
     switch (e.target.value) {
@@ -97,7 +97,7 @@ class Add extends React.Component {
         deadline.setDate(deadline.getDate() + 7);
         break;
 
-      case "Poster dan Video":
+      case "Info Seminar atau Lomba":
         deadline.setDate(deadline.getDate() + 8);
         break;
 
@@ -113,7 +113,7 @@ class Add extends React.Component {
         break;
     }
     this.setState({
-      deadline: deadline
+      deadline: deadline,
     });
   }
 
@@ -128,7 +128,7 @@ class Add extends React.Component {
       this.state.konsep !== ""
     ) {
       this.setState({
-        loading: true
+        loading: true,
       });
       let url = "https://medfokinov.fikrirp.com/api.php";
       let self = this;
@@ -161,7 +161,7 @@ class Add extends React.Component {
         method: "post",
         url: url,
         data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data" }
+        headers: { "Content-Type": "multipart/form-data" },
       })
         .then(() => {
           Swal.fire(
@@ -172,10 +172,10 @@ class Add extends React.Component {
             "success"
           ).then(() => window.location.replace("/edit"));
         })
-        .catch(error => console.log(error.response))
+        .catch((error) => console.log(error.response))
         .then(() =>
           self.setState({
-            loading: false
+            loading: false,
           })
         );
     } else {
@@ -190,7 +190,7 @@ class Add extends React.Component {
           <Col lg="6" className="mb-3 mb-lg-0" style={{ padding: "0" }}>
             <Card
               style={{
-                boxShadow: "3px 3px 13px 0px rgba(0,0,0,0.32)"
+                boxShadow: "3px 3px 13px 0px rgba(0,0,0,0.32)",
               }}
             >
               <Card.Header>Mau request desain dong, Medfokinov!</Card.Header>
@@ -212,9 +212,8 @@ class Add extends React.Component {
                       Divisi kamu:
                     </Form.Label>
                     <Form.Control as="select" onChange={this.handleRadioDivisi}>
-                      <option>Divisi PKM</option>
+                      <option>Divisi Akpres</option>
                       <option>Divisi Inovasi</option>
-                      <option>Divisi Prestasi</option>
                       <option>Divisi Public Relation</option>
                       <option>Divisi Medfo</option>
                     </Form.Control>
@@ -225,30 +224,33 @@ class Add extends React.Component {
                       Media yang diinginkan:
                     </Form.Label>
                     <Form.Control as="select" onChange={this.handleRadioMedia}>
-                      <option>Poster</option>
+                      <option>Poster Umum</option>
                       <option>Video</option>
-                      <option>Poster dan Video</option>
+                      <option>Info Seminar atau Lomba</option>
                       <option>Live Report</option>
+                      <option>Repost</option>
                     </Form.Control>
                   </Form.Group>
                   <hr />
                   <Form.Group>
                     <Form.Label style={{ fontWeight: 600 }}>
                       Buat kapan?
+                      <br />
+                      (TOLONG JANGAN NGISI TANGGAL HARI INI)
                     </Form.Label>
                     <br />
                     <DayPickerInput
-                      onDayChange={day => this.handleKapan(day)}
+                      onDayChange={(day) => this.handleKapan(day)}
                       dayPickerProps={{
                         disabledDays: [
                           {
                             after: new Date(),
-                            before: this.state.deadline
+                            before: this.state.deadline,
                           },
                           {
-                            before: new Date()
-                          }
-                        ]
+                            before: new Date(),
+                          },
+                        ],
                       }}
                     />
                   </Form.Group>
@@ -267,14 +269,21 @@ class Add extends React.Component {
                       />
                       <Form.Check
                         type="radio"
-                        label="16:00"
+                        label="13:00"
                         name="radioPublishJam"
                         id="P2"
                         onChange={this.handleRadioJam}
                       />
                       <Form.Check
                         type="radio"
-                        label="18:00"
+                        label="16:00"
+                        name="radioPublishJam"
+                        id="P3"
+                        onChange={this.handleRadioJam}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="19:00"
                         name="radioPublishJam"
                         id="P3"
                         onChange={this.handleRadioJam}
