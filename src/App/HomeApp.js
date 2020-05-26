@@ -7,7 +7,7 @@ import {
   Carousel,
   Button,
   Modal,
-  Card
+  Card,
 } from "react-bootstrap";
 import Axios from "axios";
 
@@ -17,7 +17,7 @@ class Home extends React.Component {
     this.state = {
       SOP: false,
       loading: true,
-      coronaData: {}
+      coronaData: {},
     };
     this.handleSOPModalShow = this.handleSOPModalShow.bind(this);
     this.handleSOPModalHide = this.handleSOPModalHide.bind(this);
@@ -25,28 +25,28 @@ class Home extends React.Component {
 
   handleSOPModalShow() {
     this.setState({
-      SOP: true
+      SOP: true,
     });
   }
 
   handleSOPModalHide() {
     this.setState({
-      SOP: false
+      SOP: false,
     });
   }
 
   componentDidMount() {
     let self = this;
     Axios.get("https://covid19.fikrirp.com/")
-      .then(response => {
+      .then((response) => {
         self.setState({
-          coronaData: response.data
+          coronaData: response.data,
         });
         console.log(response.data);
       })
       .then(() =>
         self.setState({
-          loading: false
+          loading: false,
         })
       );
   }
@@ -60,37 +60,11 @@ class Home extends React.Component {
               <h1
                 style={{
                   color: "white",
-                  textShadow: "1px 2px 3px rgba(0,0,0,0.43)"
+                  textShadow: "1px 2px 3px rgba(0,0,0,0.43)",
                 }}
               >
                 Info Covid19 hari ini
               </h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col md="3" className="mb-3 mb-md-0">
-              <Card body style={{ backgroundColor: "#ffe196" }}>
-                <h5>Positif</h5>
-                <h2>{this.state.coronaData[0].positif}</h2>
-              </Card>
-            </Col>
-            <Col md="3" className="mb-3 mb-md-0">
-              <Card body style={{ backgroundColor: "#d8b5b5" }}>
-                <h5>Dalam Perawatan</h5>
-                <h2>?</h2>
-              </Card>
-            </Col>
-            <Col md="3" className="mb-3 mb-md-0">
-              <Card body style={{ backgroundColor: "#05dfd7" }}>
-                <h5>Sembuh</h5>
-                <h2>{this.state.coronaData[0].sembuh}</h2>
-              </Card>
-            </Col>
-            <Col md="3" className="mb-3 mb-md-0">
-              <Card body style={{ backgroundColor: "#ec7373" }}>
-                <h5>Meninggal</h5>
-                <h2>{this.state.coronaData[0].meninggal}</h2>
-              </Card>
             </Col>
           </Row>
           <Row>
@@ -99,7 +73,7 @@ class Home extends React.Component {
                 className="text-right"
                 style={{
                   color: "white",
-                  textShadow: "1px 2px 3px rgba(0,0,0,0.43)"
+                  textShadow: "1px 2px 3px rgba(0,0,0,0.43)",
                 }}
               >
                 Sumber: covid19.or.id
