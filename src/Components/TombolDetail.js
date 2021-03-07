@@ -15,7 +15,7 @@ class TombolDetail extends React.Component {
       divisi: this.props.divisi,
       nomor: "BEM/B/AKINOV/",
       caption: this.props.caption,
-      konsep: this.props.konsep
+      konsep: this.props.konsep,
     };
 
     this.handleEditModalHide = this.handleEditModalHide.bind(this);
@@ -39,7 +39,7 @@ class TombolDetail extends React.Component {
       method: "post",
       url: url,
       data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" }
+      headers: { "Content-Type": "multipart/form-data" },
     })
       .then(() =>
         Swal.fire(
@@ -53,7 +53,7 @@ class TombolDetail extends React.Component {
       )
       .then(() => {
         self.setState({
-          editModal: false
+          editModal: false,
         });
         self.props.refreshPublikasi();
       });
@@ -61,54 +61,46 @@ class TombolDetail extends React.Component {
 
   handleKonsepTyping(e) {
     this.setState({
-      konsep: e.target.value
+      konsep: e.target.value,
     });
   }
 
   handleCaptionTyping(e) {
     this.setState({
-      caption: e.target.value
+      caption: e.target.value,
     });
   }
 
   componentDidMount() {
     switch (this.state.divisi) {
-      case "Divisi PKM":
-        this.setState(state => {
+      case "Divisi Akselerasi dan Prestasi":
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "I/"
+            nomor: state.nomor + "I/",
           };
         });
         break;
 
-      case "Divisi Inovasi":
-        this.setState(state => {
+      case "Divisi Pengembangan Inovasi":
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "II/"
+            nomor: state.nomor + "II/",
           };
         });
         break;
 
-      case "Divisi Prestasi":
-        this.setState(state => {
+      case "Divisi Komunikasi dan Relasi":
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "III/"
+            nomor: state.nomor + "III/",
           };
         });
         break;
 
-      case "Divisi Public Relation":
-        this.setState(state => {
+      case "Divisi Media Informasi":
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "IV/"
-          };
-        });
-        break;
-
-      case "Divisi Medfo":
-        this.setState(state => {
-          return {
-            nomor: state.nomor + "V/"
+            nomor: state.nomor + "IV/",
           };
         });
         break;
@@ -119,57 +111,41 @@ class TombolDetail extends React.Component {
 
     switch (this.state.kategori) {
       case "Internal - Publikasi Proker":
-        this.setState(state => {
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "I1/"
+            nomor: state.nomor + "I1/",
           };
         });
         break;
 
-      case "Internal - Publikasi Konten Informasi":
-        this.setState(state => {
+      case "Internal - Publikasi Apresiasi":
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "I2/"
-          };
-        });
-        break;
-
-      case "Internal - Publikasi Prestasi":
-        this.setState(state => {
-          return {
-            nomor: state.nomor + "I3/"
-          };
-        });
-        break;
-
-      case "Internal - Live Report Acara":
-        this.setState(state => {
-          return {
-            nomor: state.nomor + "I4/"
+            nomor: state.nomor + "I2/",
           };
         });
         break;
 
       case "Internal - Publikasi Lainnya":
-        this.setState(state => {
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "I5/"
+            nomor: state.nomor + "I3/",
           };
         });
         break;
 
       case "Eksternal - Repost":
-        this.setState(state => {
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "E1/"
+            nomor: state.nomor + "E1/",
           };
         });
         break;
 
       case "Eksternal - Publikasi Lainnya":
-        this.setState(state => {
+        this.setState((state) => {
           return {
-            nomor: state.nomor + "E2/"
+            nomor: state.nomor + "E2/",
           };
         });
         break;
@@ -181,19 +157,25 @@ class TombolDetail extends React.Component {
     switch (this.state.waktupost) {
       case "P1":
         this.setState({
-          waktupost: "10:00"
+          waktupost: "10:00",
         });
         break;
 
       case "P2":
         this.setState({
-          waktupost: "16:00"
+          waktupost: "13:00",
         });
         break;
 
       case "P3":
         this.setState({
-          waktupost: "18:00"
+          waktupost: "16:00",
+        });
+        break;
+
+      case "P4":
+        this.setState({
+          waktupost: "19:00",
         });
         break;
 
@@ -202,27 +184,27 @@ class TombolDetail extends React.Component {
     }
 
     if (this.props.nomor < 10 && this.props.nomor != null) {
-      this.setState(state => {
+      this.setState((state) => {
         return {
-          nomor: state.nomor + "00" + this.props.nomor
+          nomor: state.nomor + "00" + this.props.nomor,
         };
       });
     } else if (this.props.nomor > 10 && this.props.nomor < 100) {
-      this.setState(state => {
+      this.setState((state) => {
         return {
-          nomor: state.nomor + "0" + this.props.nomor
+          nomor: state.nomor + "0" + this.props.nomor,
         };
       });
     } else if (this.props.nomor > 100) {
-      this.setState(state => {
+      this.setState((state) => {
         return {
-          nomor: state.nomor + this.props.nomor
+          nomor: state.nomor + this.props.nomor,
         };
       });
     } else {
-      this.setState(state => {
+      this.setState((state) => {
         return {
-          nomor: state.nomor + "[BELUM DIREGISTER]"
+          nomor: state.nomor + "[BELUM DIREGISTER]",
         };
       });
     }
@@ -230,13 +212,13 @@ class TombolDetail extends React.Component {
 
   handleEditModalShow() {
     this.setState({
-      editModal: true
+      editModal: true,
     });
   }
 
   handleEditModalHide() {
     this.setState({
-      editModal: false
+      editModal: false,
     });
   }
 

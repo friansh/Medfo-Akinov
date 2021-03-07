@@ -98,7 +98,7 @@ class Add extends React.Component {
         break;
 
       case "Info Seminar atau Lomba":
-        deadline.setDate(deadline.getDate() + 8);
+        deadline.setDate(deadline.getDate() + 3);
         break;
 
       case "Live Report":
@@ -144,18 +144,20 @@ class Add extends React.Component {
       bodyFormData.set("konsep", this.state.konsep);
       bodyFormData.set(
         "caption",
-        "[JUDUL]\n\n" +
+        "[JUDUL..]\n\n" +
           "ISI\n\n" +
-          "#<NamaProker>\n" +
-          "#<HashtagDivisi>\n\n" +
-          "[PASTE NOMOR REKAP KE SINI!!!]\n\n" +
-          "#PadjadjaranAcademicCenter\n" +
+          "[PENOMORAN]\n\n" +
+          "#PadjajaranAcademicCenter\n" +
           "#UnpadPinter\n" +
-          "#KolaborasiKaryaInovasi\n\n" +
+          "#Proker...\n" +
+          "#Divisi....\n\n" +
+          "OA Line: @unpadpinter\n" +
+          "Instagram: http://www.instagram.com/unpad.pinter\n" +
+          "Youtube: https://youtube.com/channel/UC3-RtxvxqtLVxHTRrIIpczA\n" +
+          "Spotify: Podcast Pinter\n\n" +
           "Departemen Akademik dan Inovasi\n" +
           "Bidang Kemahasiswaan\n" +
-          "BEM Kema Unpad 2020\n" +
-          "Kabinet Eksplorasi Makna"
+          "BEM Kema Unpad 2021\n"
       );
       Axios({
         method: "post",
@@ -166,9 +168,9 @@ class Add extends React.Component {
         .then(() => {
           Swal.fire(
             "Sukses",
-            "Berhasil ditambah! jangan lupa konfirmasi ke medinfo ya!<br><br>" +
-              "id Line: yoongie_ss (Dian)<br>" +
-              "WA: 082118816441 (Dian)",
+            "Berhasil ditambah! jangan lupa konfirmasi ke medfo ya!<br><br>" +
+              "id Line: millatirr (Milla)<br>" +
+              "WA: 082314590865 (Milla)",
             "success"
           ).then(() => window.location.replace("/edit"));
         })
@@ -212,10 +214,10 @@ class Add extends React.Component {
                       Divisi kamu:
                     </Form.Label>
                     <Form.Control as="select" onChange={this.handleRadioDivisi}>
-                      <option>Divisi Akpres</option>
-                      <option>Divisi Inovasi</option>
-                      <option>Divisi Public Relation</option>
-                      <option>Divisi Medfo</option>
+                      <option>Divisi Akselerasi dan Prestasi</option>
+                      <option>Divisi Pengembangan Inovasi</option>
+                      <option>Divisi Media Informasi</option>
+                      <option>Divisi Komunikasi dan Relasi</option>
                     </Form.Control>
                   </Form.Group>
                   <hr />
@@ -224,7 +226,7 @@ class Add extends React.Component {
                       Media yang diinginkan:
                     </Form.Label>
                     <Form.Control as="select" onChange={this.handleRadioMedia}>
-                      <option>Poster Umum</option>
+                      <option>Poster</option>
                       <option>Video</option>
                       <option>Info Seminar atau Lomba</option>
                       <option>Live Report</option>
@@ -285,7 +287,7 @@ class Add extends React.Component {
                         type="radio"
                         label="19:00"
                         name="radioPublishJam"
-                        id="P3"
+                        id="P4"
                         onChange={this.handleRadioJam}
                       />
                     </fieldset>
@@ -300,9 +302,7 @@ class Add extends React.Component {
                       onChange={this.handleRadioKategori}
                     >
                       <option>Internal - Publikasi Proker</option>
-                      <option>Internal - Publikasi Konten Informasi</option>
-                      <option>Internal - Publikasi Prestasi</option>
-                      <option>Internal - Live Report Acara</option>
+                      <option>Internal - Publikasi Apresiasi</option>
                       <option>Internal - Publikasi Lainnya</option>
                       <option>Eksternal - Repost</option>
                       <option>Eksternal - Publikasi Lainnya</option>

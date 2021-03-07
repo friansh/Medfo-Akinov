@@ -4,9 +4,9 @@ import {
   Row,
   Col,
   Jumbotron,
-  Carousel,
   Button,
   Modal,
+  Carousel,
 } from "react-bootstrap";
 
 class Home extends React.Component {
@@ -74,20 +74,17 @@ class Home extends React.Component {
                     <b>2.</b> Video paling lambat <b>H-7</b> dari waktu
                     publikasi
                     <br />
-                    <b>3.</b> Poster dan Video paling lambat <b>H-8</b> dari
+                    <b>3.</b> Poster dan Video paling lambat <b>H-9</b> dari
                     waktu publikasi
                     <br />
                     <b>4.</b> Live Report paling lambat <b>H-1</b> dari waktu
                     publikasi
                     <br />
-                    <b>5.</b> Repost BEM Fakultas paling lambat <b>H-2</b> dari
-                    waktu publikasi
+                    <b>5.</b> Repost paling lambat <b>H-2</b> dari waktu
+                    publikasi
                     <br />
-                    <b>6.</b> Repost Eksternal Lainnya paling lambat <b>H-2</b>{" "}
-                    dari waktu publikasi dihitung saat sudah memberikan feedback
-                    <br />
-                    <br />
-                    <b>Mengorder berarti menyetujui sist.</b>
+                    <b>6.</b> Jika terdapat kendala (urgent atau revisi){" "}
+                    <b>hubungi CP</b>
                   </p>
                 </Modal.Body>
               </Modal>

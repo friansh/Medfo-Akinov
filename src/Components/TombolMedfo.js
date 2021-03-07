@@ -5,7 +5,7 @@ import {
   ButtonGroup,
   Container,
   Row,
-  Form
+  Form,
 } from "react-bootstrap";
 import Axios from "axios";
 import Swal from "sweetalert2";
@@ -15,7 +15,7 @@ class TombolMedfo extends React.Component {
     super(props);
     this.state = {
       medfoModal: false,
-      admin: this.props.admin
+      admin: this.props.admin,
     };
 
     this.handleMedfoModalHide = this.handleMedfoModalHide.bind(this);
@@ -28,7 +28,7 @@ class TombolMedfo extends React.Component {
 
   handleAdminChange(e) {
     this.setState({
-      admin: e.target.value
+      admin: e.target.value,
     });
   }
 
@@ -45,7 +45,7 @@ class TombolMedfo extends React.Component {
       method: "post",
       url: url,
       data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" }
+      headers: { "Content-Type": "multipart/form-data" },
     })
       .then(() =>
         Swal.fire(
@@ -82,14 +82,14 @@ class TombolMedfo extends React.Component {
       title: "Komentar dari medfo?",
       input: "text",
       showCancelButton: true,
-      confirmButtonText: "Kirim"
-    }).then(result => {
+      confirmButtonText: "Kirim",
+    }).then((result) => {
       bodyFormData.set("komentar", result.value);
       Axios({
         method: "post",
         url: url,
         data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data" }
+        headers: { "Content-Type": "multipart/form-data" },
       })
         .then(() =>
           Swal.fire(
@@ -126,16 +126,16 @@ class TombolMedfo extends React.Component {
     Swal.fire({
       title: "Nomor publikasinya?",
       input: "text",
-      confirmButtonText: "Kirim"
-    }).then(result => {
+      confirmButtonText: "Kirim",
+    }).then((result) => {
       bodyFormData.set("nomor", result.value);
       Axios({
         method: "post",
         url: url,
         data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data" }
+        headers: { "Content-Type": "multipart/form-data" },
       })
-        .then(response => {
+        .then((response) => {
           if (response.data.status === "OK")
             Swal.fire(
               "Berhasil",
@@ -164,13 +164,13 @@ class TombolMedfo extends React.Component {
 
   handleMedfoModalHide() {
     this.setState({
-      medfoModal: false
+      medfoModal: false,
     });
   }
 
   handleMedfoModalShow() {
     this.setState({
-      medfoModal: true
+      medfoModal: true,
     });
   }
 
@@ -199,10 +199,11 @@ class TombolMedfo extends React.Component {
                   onChange={this.handleAdminChange}
                   defaultValue={this.state.admin}
                 >
-                  <option>Amin</option>
-                  <option>Dian</option>
-                  <option>Fikri</option>
-                  <option>Ilma</option>
+                  <option>Afifah</option>
+                  <option>Atsilah</option>
+                  <option>Fiqar</option>
+                  <option>Ihda</option>
+                  <option>Mila</option>
                 </Form.Control>
               </Row>
               <Row className="mt-3">
